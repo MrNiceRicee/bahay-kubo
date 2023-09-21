@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(60, 0%, 98%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: hsl(20, 14.3%, 4.1%);
+  }
+}
+
+.dark {
+  --background: hsl(20, 14.3%, 4.1%);
+}
+
+body {
+  background-color: var(--background);
+}

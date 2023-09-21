@@ -1,0 +1,47 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string | undefined;
+  description?: string | undefined;
+}
+
+const {
+  title = "Joshua Santos: Personal Site",
+  description = "The personal site of Joshua Santos",
+} = Astro.props;
+---
+
+<meta charset="UTF-8" />
+<meta name="description" property="og:description" content={description} />
+<meta name="viewport" content="width=device-width" />
+<meta name="generator" content={Astro.generator} />
+<title>{title}</title>
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<script is:inline>
+  const getThemePreference = () => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    // initial state is system
+    return "system";
+  };
+
+  const getIsDark = () => {
+    const themePreference = getThemePreference();
+
+    switch (themePreference) {
+      case "dark":
+        return true;
+      case "light":
+        return false;
+      default:
+        // themePreference is system
+        return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+  };
+  const isDark = getIsDark();
+
+  document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+</script>
