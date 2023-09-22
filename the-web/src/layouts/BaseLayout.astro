@@ -16,7 +16,7 @@ const { title, description } = Astro.props;
     <MainHead title={title} description={description} />
     <ViewTransitions />
   </head>
-  <body>
+  <body class="safe-top safe-left safe-right safe-bottom">
     <slot />
   </body>
 </html>

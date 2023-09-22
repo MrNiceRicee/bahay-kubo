@@ -42,3 +42,10 @@ body {
     var(--background);
   background-blend-mode: overlay, normal;
 }
+
+/* deactivate grain for high contrast users */
+@media (forced-colors: active) {
+  body {
+    background: var(--background);
+  }
+}
