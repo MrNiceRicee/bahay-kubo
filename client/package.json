@@ -3,9 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "clean": "rm -rf dist node_modules bun.lockb",
+    "clean": "rm -rf dist node_modules bun.lockb pnpm-lock.yaml",
     "dev": "bun --bun astro dev",
-    "start": "bun --bun astro preview",
+    "start": "astro dev",
     "build": "bun --bun astro build",
     "preview": "bun --bun astro preview",
     "astro": "astro"
