@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+
 import MainHead from "../components/MainHead.astro";
 
 interface Props {
@@ -12,6 +14,7 @@ const { title, description } = Astro.props;
 <html>
   <head>
     <MainHead title={title} description={description} />
+    <ViewTransitions />
   </head>
   <body>
     <slot />

@@ -4,18 +4,41 @@
 
 :root {
   --background: hsl(60, 0%, 98%);
+  --text-foreground: hsl(240, 3%, 10%);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: hsl(20, 14.3%, 4.1%);
+    --background: hsl(24, 10%, 8%);
+    --text-foreground: hsl(240, 3%, 96%);
   }
 }
 
 .dark {
-  --background: hsl(20, 14.3%, 4.1%);
+  --background: hsl(24, 10%, 8%);
+  --text-foreground: hsl(240, 3%, 96%);
+}
+
+.grain-bg {
+  background:
+    /* noise */
+    url('/assets/backgrounds/noise.png') top center/220px repeat,
+    /* default background */
+    var(--background);
+  background-blend-mode: overlay, normal;
+}
+
+.grain {
+  background: url('/assets/backgrounds/noise.png') top center/220px repeat;
+  background-blend-mode: overlay;
 }
 
 body {
-  background-color: var(--background);
+  color: var(--text-foreground);
+  background:
+    /* noise */
+    url('/assets/backgrounds/noise.png') top center/220px repeat,
+    /* default background */
+    var(--background);
+  background-blend-mode: overlay, normal;
 }
