@@ -1,4 +1,5 @@
 ---
+import Icon from "../components/Icon.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
@@ -7,7 +8,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <div class="text-center">
       <h1 class="text-4xl font-bold">Yippie!</h1>
       <p class="text-xl font-light">
-        I am Joshua <span class="text-indigo-500">Santos</span>
+        I am Joshua <span class="text-accent-neutral font-bold">Santos</span>
+        <Icon icon="code" color="" color="var(--accent-light)" size="100" />
+        <Icon icon="code" color="" color="var(--accent-neutral)" size="100" />
+        <Icon icon="code" color="" color="var(--accent-dark)" size="100" />
       </p>
     </div>
   </main>
