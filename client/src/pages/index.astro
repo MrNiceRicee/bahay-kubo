@@ -7,11 +7,29 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <main class="flex items-center justify-center h-screen">
     <div class="text-center">
       <h1 class="text-4xl font-bold">Yippie!</h1>
-      <p class="text-xl font-light">
-        I am Joshua <span class="text-accent-neutral font-bold">Santos</span>
-        <Icon icon="code" color="" color="var(--accent-light)" size="100" />
-        <Icon icon="code" color="" color="var(--accent-neutral)" size="100" />
-        <Icon icon="code" color="" color="var(--accent-dark)" size="100" />
+      <p class="font-light">
+        I am Joshua <span class="font-bold text-accent-neutral">Santos</span>
+        <Icon
+          icon="code"
+          color=""
+          color="var(--accent-light)"
+          size="100"
+          gradient
+        />
+        <Icon
+          icon="code"
+          color=""
+          color="var(--accent-neutral)"
+          size="100"
+          gradient
+        />
+        <Icon
+          icon="code"
+          color=""
+          color="var(--accent-dark)"
+          size="100"
+          gradient
+        />
       </p>
     </div>
   </main>

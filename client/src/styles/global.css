@@ -10,6 +10,11 @@
   --accent-light: hsl(29, 100%, 71%);
   --accent-neutral: hsl(29, 100%, 50%);
   --accent-dark: hsl(29, 61%, 24%);
+
+  /* gradient stops */
+  --gradient-stop-1: var(--accent-light);
+  --gradient-stop-2: var(--accent-neutral);
+  --gradient-stop-3: var(--accent-dark);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,17 +26,27 @@
     --accent-light: hsl(29, 61%, 24%);
     --accent-neutral: hsl(29, 100%, 50%);
     --accent-dark: hsl(29, 100%, 71%);
+
+    /* gradient stops for dark mode */
+    --gradient-stop-1: var(--accent-dark);
+    --gradient-stop-2: var(--accent-neutral);
+    --gradient-stop-3: var(--accent-light);
   }
 }
 
 .dark {
   --background: hsl(24, 10%, 8%);
   --text-foreground: hsl(240, 3%, 96%);
-  
+
   /* accent colors for dark mode */
   --accent-light: hsl(29, 61%, 24%);
   --accent-neutral: hsl(29, 100%, 50%);
   --accent-dark: hsl(29, 100%, 71%);
+
+  /* gradient stops for dark mode */
+  --gradient-stop-1: var(--accent-dark);
+  --gradient-stop-2: var(--accent-neutral);
+  --gradient-stop-3: var(--accent-light);
 }
 
 .grain-bg {
@@ -62,5 +77,11 @@ body {
 @media (forced-colors: active) {
   body {
     background: var(--background);
+  }
+
+  :root {
+    --gradient-stop-1: var(--accent-neutral);
+    --gradient-stop-2: var(--accent-neutral);
+    --gradient-stop-3: var(--accent-neutral);
   }
 }

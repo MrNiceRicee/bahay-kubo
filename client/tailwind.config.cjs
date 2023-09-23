@@ -10,30 +10,34 @@ module.exports = {
         background: "var(--background)",
       },
       colors: {
-        'accent-light': 'var(--accent-light)',
-        'accent-neutral': 'var(--accent-neutral)',
-        'accent-dark': 'var(--accent-dark)',
-      }
+        "accent-light": "var(--accent-light)",
+        "accent-neutral": "var(--accent-neutral)",
+        "accent-dark": "var(--accent-dark)",
+        background: "var(--background)",
+        "text-foreground": "var(--text-foreground)",
+      },
     },
   },
-  plugins: [plugin(function ({ addUtilities }) {
-    addUtilities({
-      '.safe-top': {
-        paddingTop: 'constant(safe-area-inset-top)',
-        paddingTop: 'env(safe-area-inset-top)'
-      },
-      '.safe-bottom': {
-        paddingBottom: 'constant(safe-area-inset-bottom)',
-        paddingBottom: 'env(safe-area-inset-bottom)'
-      },
-      '.safe-left': {
-        paddingLeft: 'constant(safe-area-inset-left)',
-        paddingLeft: 'env(safe-area-inset-left)'
-      },
-      '.safe-right': {
-        paddingRight: 'constant(safe-area-inset-right)',
-        paddingRight: 'env(safe-area-inset-right)'
-      },
-    })
-  })],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        ".safe-top": {
+          paddingTop: "constant(safe-area-inset-top)",
+          paddingTop: "env(safe-area-inset-top)",
+        },
+        ".safe-bottom": {
+          paddingBottom: "constant(safe-area-inset-bottom)",
+          paddingBottom: "env(safe-area-inset-bottom)",
+        },
+        ".safe-left": {
+          paddingLeft: "constant(safe-area-inset-left)",
+          paddingLeft: "env(safe-area-inset-left)",
+        },
+        ".safe-right": {
+          paddingRight: "constant(safe-area-inset-right)",
+          paddingRight: "env(safe-area-inset-right)",
+        },
+      });
+    }),
+  ],
 };
