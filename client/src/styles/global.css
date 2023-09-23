@@ -5,18 +5,33 @@
 :root {
   --background: hsl(60, 0%, 98%);
   --text-foreground: hsl(240, 3%, 10%);
+
+  /* accent colors */
+  --accent-light: hsl(29, 100%, 71%);
+  --accent-neutral: hsl(29, 100%, 50%);
+  --accent-dark: hsl(29, 61%, 24%);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: hsl(24, 10%, 8%);
     --text-foreground: hsl(240, 3%, 96%);
+
+    /* accent colors for dark mode */
+    --accent-light: hsl(29, 61%, 24%);
+    --accent-neutral: hsl(29, 100%, 50%);
+    --accent-dark: hsl(29, 100%, 71%);
   }
 }
 
 .dark {
   --background: hsl(24, 10%, 8%);
   --text-foreground: hsl(240, 3%, 96%);
+  
+  /* accent colors for dark mode */
+  --accent-light: hsl(29, 61%, 24%);
+  --accent-neutral: hsl(29, 100%, 50%);
+  --accent-dark: hsl(29, 100%, 71%);
 }
 
 .grain-bg {

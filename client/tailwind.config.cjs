@@ -9,6 +9,11 @@ module.exports = {
       backgroundColor: {
         background: "var(--background)",
       },
+      colors: {
+        'accent-light': 'var(--accent-light)',
+        'accent-neutral': 'var(--accent-neutral)',
+        'accent-dark': 'var(--accent-dark)',
+      }
     },
   },
   plugins: [plugin(function ({ addUtilities }) {
