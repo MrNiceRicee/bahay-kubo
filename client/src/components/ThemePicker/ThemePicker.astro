@@ -6,10 +6,8 @@ import ThemeButton from "./ThemeButton.astro";
   <legend class="sr-only">Toggle theme</legend>
   <div
     id="theme-toggle-container"
-    class="w-fit relative flex border-0 rounded-full p-1 gap-2 dark:bg-zinc-950 bg-zinc-200 shadow-accent-neutral"
+    class="w-fit relative flex border-0 rounded-full p-1 gap-2 dark:bg-zinc-950 bg-zinc-200 shadow-accent-neutral overflow-hidden"
   >
-    <!-- <div class="indicator"></div> -->
-
     <ThemeButton name="light" />
     <ThemeButton name="system" />
     <ThemeButton name="dark" />

@@ -8,9 +8,9 @@
   --text-foreground: hsl(240, 3%, 10%);
 
   /* accent colors */
-  --accent-light: hsl(29, 100%, 71%);
+  --accent-light: hsl(29, 100%, 75%);
   --accent-neutral: hsl(29, 100%, 50%);
-  --accent-dark: hsl(29, 61%, 24%);
+  --accent-dark: var(--orange-11);
   --accent-overlay: hsla(29, 100%, 50%, 0.33);
 
   /* gradient stops */
@@ -41,8 +41,8 @@
   --text-foreground: hsl(240, 3%, 96%);
 
   /* accent colors for dark mode */
-  --accent-light: hsl(29, 61%, 24%);
-  --accent-neutral: hsl(29, 100%, 50%);
+  --accent-light: hsl(29, 95%, 25%);
+  --accent-neutral: var(--orange-5);
   --accent-dark: hsl(29, 100%, 71%);
 
   /* gradient stops for dark mode */

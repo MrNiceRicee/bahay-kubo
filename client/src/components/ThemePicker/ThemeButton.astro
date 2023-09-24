@@ -23,17 +23,17 @@ function getIcon() {
   name={`theme-toggle-${name}`}
   data-mode={name}
   data-checked="false"
+  class="group"
 >
-  <label class="group" data-checked="false">
+  <label>
     <input
       type="radio"
       class="sr-only peer"
       name="theme-toggle"
       data-checked="false"
     />
-    <span class="icon peer-checked:text-accent-neutral">
-      <Icon icon={getIcon()} />
-    </span>
+
+    <Icon icon={getIcon()} className="icon peer-checked:text-accent-neutral" />
   </label>
 </theme-button>
 
@@ -42,16 +42,7 @@ function getIcon() {
     z-index: 1;
     position: relative;
     display: flex;
-    color: var(--accent-overlay);
-    overflow: hidden;
-  }
-  .icon::before {
-    content: "";
-    z-index: -1;
-    position: absolute;
-    inset: 0;
-    background-color: var(--accent-regular);
-    border-radius: 999rem;
+    color: var(--accent-dark);
   }
 </style>
 <script>
@@ -66,6 +57,10 @@ function getIcon() {
         const checked = input.checked;
         this.setChecked({ checked, mode });
       });
+
+      if (this.getCurrentMode() === mode) {
+        this.setChecked({ checked: true, mode });
+      }
     }
 
     // get the document's current theme
@@ -80,6 +75,7 @@ function getIcon() {
       input.dataset.checked = checked.toString();
       this.dataset.checked = checked.toString();
       input.checked = checked;
+      this.setMode(mode);
 
       document.documentElement.classList.remove("light", "system", "dark");
       document.documentElement.classList.add(mode);
@@ -89,6 +85,23 @@ function getIcon() {
           "(prefers-color-scheme: dark)",
         ).matches;
         document.documentElement.classList.add(isDark ? "dark" : "light");
+      }
+    }
+
+    getCurrentMode() {
+      if (
+        typeof localStorage !== "undefined" &&
+        localStorage.getItem("theme")
+      ) {
+        return localStorage.getItem("theme");
+      }
+      // initial state is system
+      return "system";
+    }
+
+    setMode(mode: string) {
+      if (typeof localStorage !== "undefined") {
+        localStorage.setItem("theme", mode);
       }
     }
   }
