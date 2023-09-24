@@ -14,12 +14,16 @@ const {
 
 <meta charset="UTF-8" />
 <meta name="description" property="og:description" content={description} />
-<meta name="viewport" content="width=device-width, initial-scale=1, height=device-height, viewport-fit=cover" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, height=device-height, viewport-fit=cover"
+/>
 <meta name="generator" content={Astro.generator} />
 <title>{title}</title>
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <script is:inline>
+  // get the theme preference from local storage (first load)
   const getThemePreference = () => {
     if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
       return localStorage.getItem("theme");
@@ -33,15 +37,55 @@ const {
 
     switch (themePreference) {
       case "dark":
-        return true;
+        return ["dark", true];
       case "light":
-        return false;
+        return ["light", false];
       default:
         // themePreference is system
-        return window.matchMedia("(prefers-color-scheme: dark)").matches;
+        // return window.matchMedia("(prefers-color-scheme: dark)").matches;
+        return [
+          "system",
+          window.matchMedia("(prefers-color-scheme: dark)").matches,
+        ];
     }
   };
   const isDark = getIsDark();
 
-  document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+  const changeThemeValue = ({ matches }) => {
+    if (matches) {
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+    } else {
+      document.documentElement.classList.add("light");
+      document.documentElement.classList.remove("dark");
+    }
+  };
+
+  if (isDark[0] === "system") {
+    document.documentElement.classList.add(
+      isDark[0],
+      isDark[1] ? "dark" : "light",
+    );
+    document.documentElement.setAttribute(
+      "data-theme",
+      isDark[1] ? "dark" : "light",
+    );
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", changeThemeValue);
+  } else {
+    document.documentElement.classList.add(
+      isDark[0],
+      isDark[1] ? "dark" : "light",
+    );
+    document.documentElement.setAttribute(
+      "data-theme",
+      isDark[1] ? "dark" : "light",
+    );
+    document.documentElement.classList.remove("system");
+    // remove listener
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .removeEventListener("change", changeThemeValue);
+  }
 </script>

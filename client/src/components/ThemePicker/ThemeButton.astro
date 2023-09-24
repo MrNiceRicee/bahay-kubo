@@ -1,0 +1,97 @@
+---
+import Icon from "../Icon.astro";
+
+interface Props {
+  name: "light" | "system" | "dark";
+}
+
+const { name } = Astro.props;
+
+function getIcon() {
+  switch (name) {
+    case "light":
+      return "sun";
+    case "system":
+      return "desktop";
+    case "dark":
+      return "moon-stars";
+  }
+}
+---
+
+<theme-button
+  name={`theme-toggle-${name}`}
+  data-mode={name}
+  data-checked="false"
+>
+  <label class="group" data-checked="false">
+    <input
+      type="radio"
+      class="sr-only peer"
+      name="theme-toggle"
+      data-checked="false"
+    />
+    <span class="icon peer-checked:text-accent-neutral">
+      <Icon icon={getIcon()} />
+    </span>
+  </label>
+</theme-button>
+
+<style>
+  .icon {
+    z-index: 1;
+    position: relative;
+    display: flex;
+    color: var(--accent-overlay);
+    overflow: hidden;
+  }
+  .icon::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background-color: var(--accent-regular);
+    border-radius: 999rem;
+  }
+</style>
+<script>
+  class ThemeButton extends HTMLElement {
+    constructor() {
+      super();
+
+      const input = this.querySelector("input")!;
+      const mode = this.dataset.mode!;
+
+      input.addEventListener("click", () => {
+        const checked = input.checked;
+        this.setChecked({ checked, mode });
+      });
+    }
+
+    // get the document's current theme
+    setChecked({
+      checked,
+      mode,
+    }: {
+      checked: boolean;
+      mode: string; // "light" | "system" | "dark"
+    }) {
+      const input = this.querySelector("input")!;
+      input.dataset.checked = checked.toString();
+      this.dataset.checked = checked.toString();
+      input.checked = checked;
+
+      document.documentElement.classList.remove("light", "system", "dark");
+      document.documentElement.classList.add(mode);
+      document.documentElement.dataset.theme = mode;
+      if (mode === "system") {
+        const isDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        document.documentElement.classList.add(isDark ? "dark" : "light");
+      }
+    }
+  }
+
+  customElements.define("theme-button", ThemeButton);
+</script>
