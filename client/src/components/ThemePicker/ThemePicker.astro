@@ -1,12 +1,13 @@
 ---
 import ThemeButton from "./ThemeButton.astro";
+//dark:bg-zinc-900 bg-zinc-100
 ---
 
 <fieldset name="theme-toggle" aria-label="Toggle theme">
   <legend class="sr-only">Toggle theme</legend>
   <div
     id="theme-toggle-container"
-    class="w-fit relative flex rounded-full p-0 gap-1 dark:bg-zinc-950 bg-zinc-100 outline-accent-light outline shadow-accent-light shadow-sm"
+    class="w-fit relative flex rounded-full p-0 gap-1  outline-accent-light outline shadow-accent-light shadow-sm"
   >
     <ThemeButton name="light" />  
     <ThemeButton name="system" />

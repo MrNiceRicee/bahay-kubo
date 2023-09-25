@@ -14,6 +14,9 @@ dependencies:
   astro:
     specifier: 3.1.2
     version: 3.1.2
+  cal-sans:
+    specifier: ^1.0.1
+    version: 1.0.1
   nanostores:
     specifier: ^0.9.3
     version: 0.9.3
@@ -1146,6 +1149,10 @@ packages:
     engines: {node: '>=10.16.0'}
     dependencies:
       streamsearch: 1.1.0
+    dev: false
+
+  /cal-sans@1.0.1:
+    resolution: {integrity: sha512-XwN3/7jez8WmFVcNnNqO2K9lh133KiIcURCyGFnSM+ZmNZ8zIcOTNfr3SpenLAkRceYsq+fQNX/PL4C1rIkEPQ==}
     dev: false
 
   /camelcase-css@2.0.1:
