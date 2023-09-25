@@ -23,7 +23,7 @@ function getIcon() {
   name={`theme-toggle-${name}`}
   data-mode={name}
   data-checked="false"
-  class="group"
+  class="group rounded-full p-1 z-10 focus-within:bg-accent-light focus-within:ring-2 focus-within:ring-accent-neutral focus-within:ring-offset-2 focus-within:ring-offset-accent-light"
 >
   <label>
     <input
@@ -31,9 +31,12 @@ function getIcon() {
       class="sr-only peer"
       name="theme-toggle"
       data-checked="false"
+      data-mode={name}
     />
-
-    <Icon icon={getIcon()} className="icon peer-checked:text-accent-neutral" />
+    <Icon
+      icon={getIcon()}
+      className="icon peer-checked:text-accent-neutral text-accent-light"
+    />
   </label>
 </theme-button>
 
@@ -46,6 +49,62 @@ function getIcon() {
   }
 </style>
 <script>
+  // class ThemeButton extends HTMLElement {
+  //   constructor() {
+  //     super();
+
+  //     const input = this.querySelector("input")!;
+  //     const mode = this.dataset.mode!;
+
+  //     input.addEventListener("click", () => {
+  //       const checked = input.checked;
+  //       this.setChecked({ checked, mode });
+  //     });
+  //   }
+
+  //   // get the document's current theme
+  //   setChecked({
+  //     checked,
+  //     mode,
+  //   }: {
+  //     checked: boolean;
+  //     mode: string; // "light" | "system" | "dark"
+  //   }) {
+  //     const input = this.querySelector("input")!;
+  //     input.dataset.checked = checked.toString();
+  //     this.dataset.checked = checked.toString();
+  //     input.checked = checked;
+  //     this.setMode(mode);
+
+  //     document.documentElement.classList.remove("light", "system", "dark");
+  //     document.documentElement.classList.add(mode);
+  //     document.documentElement.dataset.theme = mode;
+  //     if (mode === "system") {
+  //       const isDark = window.matchMedia(
+  //         "(prefers-color-scheme: dark)",
+  //       ).matches;
+  //       document.documentElement.classList.add(isDark ? "dark" : "light");
+  //     }
+  //   }
+
+  //   getCurrentMode() {
+  //     if (
+  //       typeof localStorage !== "undefined" &&
+  //       localStorage.getItem("theme")
+  //     ) {
+  //       return localStorage.getItem("theme");
+  //     }
+  //     // initial state is system
+  //     return "system";
+  //   }
+
+  //   setMode(mode: string) {
+  //     if (typeof localStorage !== "undefined") {
+  //       localStorage.setItem("theme", mode);
+  //     }
+  //   }
+  // }
+  import { themeState } from "./themeState";
   class ThemeButton extends HTMLElement {
     constructor() {
       super();
@@ -54,16 +113,21 @@ function getIcon() {
       const mode = this.dataset.mode!;
 
       input.addEventListener("click", () => {
-        const checked = input.checked;
-        this.setChecked({ checked, mode });
+        this.setMode(mode);
       });
 
-      if (this.getCurrentMode() === mode) {
-        this.setChecked({ checked: true, mode });
+      themeState.subscribe((mode) => {
+        this.setChecked({ checked: mode === this.dataset.mode, mode });
+      });
+    }
+
+    setMode(mode: string) {
+      themeState.set(mode);
+      if (localStorage) {
+        localStorage.setItem("theme", mode);
       }
     }
 
-    // get the document's current theme
     setChecked({
       checked,
       mode,
@@ -85,23 +149,6 @@ function getIcon() {
           "(prefers-color-scheme: dark)",
         ).matches;
         document.documentElement.classList.add(isDark ? "dark" : "light");
-      }
-    }
-
-    getCurrentMode() {
-      if (
-        typeof localStorage !== "undefined" &&
-        localStorage.getItem("theme")
-      ) {
-        return localStorage.getItem("theme");
-      }
-      // initial state is system
-      return "system";
-    }
-
-    setMode(mode: string) {
-      if (typeof localStorage !== "undefined") {
-        localStorage.setItem("theme", mode);
       }
     }
   }

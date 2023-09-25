@@ -43,7 +43,7 @@
   /* accent colors for dark mode */
   --accent-light: hsl(29, 95%, 25%);
   --accent-neutral: var(--orange-5);
-  --accent-dark: hsl(29, 100%, 71%);
+  --accent-dark: hsl(29, 100%, 78%);
 
   /* gradient stops for dark mode */
   --gradient-stop-1: var(--accent-dark);
@@ -73,13 +73,13 @@ body {
     /* default background */
     var(--background);
   background-blend-mode: overlay, normal;
+  transition: all 0.5s var(--ease-3);
 }
 
 /* deactivate grain for high contrast users */
 @media (forced-colors: active) {
   body {
     background: var(--background);
-    transition: background var(--theme-transition);
   }
 
   :root {
