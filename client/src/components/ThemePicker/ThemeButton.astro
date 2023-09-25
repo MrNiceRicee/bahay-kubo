@@ -23,7 +23,7 @@ function getIcon() {
   name={`theme-toggle-${name}`}
   data-mode={name}
   data-checked="false"
-  class="group rounded-full p-1 z-10 focus-within:bg-accent-light focus-within:ring-2 focus-within:ring-accent-neutral focus-within:ring-offset-2 focus-within:ring-offset-accent-light"
+  class="group rounded-full p-1 z-10 data-[checked=true]:bg-accent-neutral focus-within:bg-background focus-within:ring-2 focus-within:ring-accent-neutral focus-within:ring-offset-2 focus-within:ring-offset-accent-light"
 >
   <label>
     <input
@@ -35,7 +35,7 @@ function getIcon() {
     />
     <Icon
       icon={getIcon()}
-      className="icon peer-checked:text-accent-neutral text-accent-light"
+      className="icon peer-checked:text-[var(--background )] text-accent-light"
     />
   </label>
 </theme-button>
