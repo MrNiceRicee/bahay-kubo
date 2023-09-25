@@ -1,4 +1,6 @@
 const plugin = require("tailwindcss/plugin");
+const defaultTheme = require("tailwindcss/defaultTheme");
+// const calsans = require('cal-sans');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -15,6 +17,9 @@ module.exports = {
         "accent-dark": "var(--accent-dark)",
         background: "var(--background)",
         "text-foreground": "var(--text-foreground)",
+      },
+      fontFamily: {
+        cal: ["Cal Sans", ...defaultTheme.fontFamily.sans],
       },
     },
   },

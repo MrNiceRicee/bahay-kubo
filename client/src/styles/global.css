@@ -37,7 +37,7 @@
 }
 */
 .dark {
-  --background: hsl(24, 10%, 8%);
+  --background: hsl(24, 10%, 14%);
   --text-foreground: hsl(240, 3%, 96%);
 
   /* accent colors for dark mode */
@@ -74,6 +74,15 @@ body {
     var(--background);
   background-blend-mode: overlay, normal;
   transition: all 0.5s var(--ease-3);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Cal Sans', sans-serif;
 }
 
 /* deactivate grain for high contrast users */
